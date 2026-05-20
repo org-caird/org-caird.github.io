@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organization for Clinical AI Research and Development</title>
+  <meta name="description" content="一般社団法人 臨床AIシステム研究開発機構（OCAIRD）公式ウェブサイト">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #1a1a2e;
+    background: #ffffff;
+}
+a { color: inherit; text-decoration: none; }
+
+/* --- Navigation --- */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #e8ecf0;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    height: 64px;
+}
+.nav-brand {
+    font-weight: 800;
+    font-size: 1rem;
+    color: #1a3a5c;
+    letter-spacing: 0.06em;
+}
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin-left: auto;
+    font-size: 0.875rem;
+}
+.nav-links a { color: #4a5568; transition: color 0.2s; }
+.nav-links a:hover { color: #1a3a5c; }
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-left: 2rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+.lang-switcher a { color: #718096; transition: color 0.2s; }
+.lang-switcher a:hover { color: #1a3a5c; }
+.lang-switcher .lang-active {
+    color: #1a3a5c;
+    font-weight: 700;
+    pointer-events: none;
+}
+.lang-switcher .lang-sep { color: #cbd5e0; }
+
+/* --- Shared section styles --- */
+section { padding: 5rem 2rem; }
+.container { max-width: 900px; margin: 0 auto; }
+.section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1a3a5c;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
+}
+.section-divider {
+    width: 40px;
+    height: 3px;
+    background: #2b6cb0;
+    border-radius: 2px;
+    margin-bottom: 2.5rem;
+}
+
+/* --- Hero --- */
+#hero {
+    background: linear-gradient(135deg, #eef4ff 0%, #ffffff 55%, #f5f8ff 100%);
+    padding: 7rem 2rem;
+    text-align: center;
+}
+.hero-abbr {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #1a3a5c;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+}
+.hero-name {
+    font-size: 1rem;
+    color: #4a5568;
+    font-weight: 400;
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.04em;
+}
+.hero-tagline {
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: #1a3a5c;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+.hero-subtitle {
+    font-size: 1rem;
+    color: #718096;
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.9;
+}
+
+/* --- Message --- */
+#message { background: #ffffff; }
+.message-box {
+    background: #f7faff;
+    border-left: 4px solid #2b6cb0;
+    border-radius: 0 8px 8px 0;
+    padding: 2rem 2.5rem;
+}
+.message-body {
+    color: #2d3748;
+    line-height: 2;
+    white-space: pre-line;
+}
+.message-name {
+    text-align: right;
+    color: #1a3a5c;
+    font-weight: 700;
+    margin-top: 1.5rem;
+}
+
+/* --- Purpose / Values --- */
+#purpose { background: #f8faff; }
+.purpose-body {
+    font-size: 1.05rem;
+    color: #2d3748;
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    line-height: 1.9;
+}
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.5rem;
+}
+.value-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.75rem;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+.value-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+.value-title { font-weight: 700; color: #1a3a5c; margin-bottom: 0.5rem; }
+.value-body { font-size: 0.875rem; color: #718096; line-height: 1.7; }
+
+/* --- Activities --- */
+#activities { background: #ffffff; }
+.activity-list { display: flex; flex-direction: column; gap: 1.25rem; }
+.activity-card {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    background: #f8faff;
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+    border: 1px solid #e2e8f0;
+}
+.activity-number {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #c5d5e8;
+    min-width: 3rem;
+    line-height: 1;
+    padding-top: 0.1rem;
+}
+.activity-title { font-weight: 700; color: #1a3a5c; margin-bottom: 0.4rem; }
+.activity-body { font-size: 0.9rem; color: #4a5568; line-height: 1.8; }
+
+/* --- Officers --- */
+#officers { background: #f8faff; }
+.officers-note { font-size: 0.85rem; color: #a0aec0; margin-bottom: 1.5rem; }
+.officers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+.officer-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+}
+.officer-role {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #2b6cb0;
+    background: #ebf4ff;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.6rem;
+}
+.officer-name { font-size: 1.05rem; font-weight: 700; color: #1a1a2e; }
+
+/* --- Org info table (inside officers section) --- */
+.org-info-block {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 2rem;
+}
+.org-info-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #718096;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+}
+.info-table { width: 100%; border-collapse: collapse; }
+.info-table tr { border-bottom: 1px solid #e2e8f0; }
+.info-table tr:last-child { border-bottom: none; }
+.info-table td { padding: 0.8rem 1rem; font-size: 0.9rem; }
+.info-table td:first-child { color: #718096; font-weight: 600; width: 45%; }
+.info-table td:last-child { color: #2d3748; }
+
+/* --- Contact --- */
+#contact {
+    background: #1a3a5c;
+    color: #ffffff;
+    text-align: center;
+}
+#contact .section-title { color: #ffffff; }
+#contact .section-divider { background: #63b3ed; }
+.contact-email {
+    display: inline-block;
+    margin: 1.5rem 0 1rem;
+    font-size: 1.2rem;
+    color: #63b3ed;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.contact-address { color: #a0b4c8; margin-bottom: 1rem; font-size: 0.9rem; }
+.contact-note { color: #718096; font-size: 0.875rem; }
+
+/* --- Footer --- */
+footer {
+    background: #0f2540;
+    color: #4a6080;
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.8rem;
+    line-height: 2;
+}
+
+/* --- Responsive --- */
+@media (max-width: 640px) {
+    .nav-links { display: none; }
+    .lang-switcher { margin-left: auto; }
+    .hero-abbr { font-size: 2.5rem; }
+    .hero-tagline { font-size: 1.2rem; }
+    section { padding: 3.5rem 1.25rem; }
+    .activity-card { flex-direction: column; gap: 0.5rem; }
+    .activity-number { font-size: 1.25rem; min-width: unset; }
+}
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="#">OCAIRD</a>
+  <ul class="nav-links"><li><a href="#message">Message</a></li><li><a href="#purpose">Mission</a></li><li><a href="#activities">Activities</a></li><li><a href="#officers">Officers</a></li><li><a href="#contact">Contact</a></li></ul>
+  <div class="lang-switcher"><a href="index_j.html">日本語</a><span class="lang-sep">/</span><span class="lang-active">English</span></div>
+</nav>
+
+<section id="hero">
+  <div class="container">
+    <div class="hero-abbr">OCAIRD</div>
+    <div class="hero-name">Organization for Clinical AI Research and Development</div>
+    <div class="hero-tagline">Safer Healthcare Through Clinical AI.</div>
+    <div class="hero-subtitle">We contribute to patient safety and healthcare quality through the introduction, operation, and technical support of AI systems in clinical settings.</div>
+  </div>
+</section>
+
+<section id="message">
+  <div class="container">
+    <div class="section-title">Message from the Representative Director</div>
+    <div class="section-divider"></div>
+    <div class="message-box">
+      <div class="message-body">Recent years have seen rapid advances in artificial intelligence (AI), bringing profound changes to the practice of medicine. At the same time, the safe and sustainable deployment of clinical AI systems demands a robust support structure grounded in both technical expertise and an intimate understanding of real-world healthcare settings.
+
+The Organization for Clinical AI Research and Development (OCAIRD) was established to meet precisely these needs. Our mission is to contribute to patient safety and the improvement of healthcare quality through the practical implementation, operational support, and technical consulting of clinical AI systems.
+
+As a non-profit general incorporated association, we operate on the fundamental principle of serving the public good rather than pursuing commercial interests. By deepening collaboration with hospitals, research institutions, and industry partners, we are committed to fostering a sound and trustworthy medical AI ecosystem in Japan.
+
+We look forward to your continued support and cooperation.</div>
+      <div class="message-name">Representative Director　Kenji Yamada</div>
+    </div>
+  </div>
+</section>
+
+<section id="purpose">
+  <div class="container">
+    <div class="section-title">Mission & Values</div>
+    <div class="section-divider"></div>
+    <div class="purpose-body">Our mission is to improve patient safety and the quality of healthcare, and to contribute broadly to the public good, through the introduction, operation, and technical support of AI systems in clinical settings.</div>
+    <div class="values-grid">
+    <div class="value-card">
+      <div class="value-icon">🏥</div>
+      <div class="value-title">Patient Safety First</div>
+      <div class="value-body">With patient safety as our top priority, we support the introduction of AI systems that work reliably in real clinical environments.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🔬</div>
+      <div class="value-title">Evidence-Based Practice</div>
+      <div class="value-body">Through collaborative research and rigorous technical validation, we promote evidence-based adoption of medical AI.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🤝</div>
+      <div class="value-title">Commitment to the Public Good</div>
+      <div class="value-body">As a non-profit organization, we conduct open and transparent activities in service of the public good.</div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section id="activities">
+  <div class="container">
+    <div class="section-title">Activities</div>
+    <div class="section-divider"></div>
+    <div class="activity-list">
+    <div class="activity-card">
+      <div class="activity-number">01</div>
+      <div>
+        <div class="activity-title">Technical Adjustment, Development & Maintenance</div>
+        <div class="activity-body">We perform technical adjustments, iterative development, and ongoing maintenance to bring clinical AI systems into practical use. Our support extends throughout the system lifecycle to ensure stable, long-term operation.</div>
+      </div>
+    </div>
+    <div class="activity-card">
+      <div class="activity-number">02</div>
+      <div>
+        <div class="activity-title">Collaborative Research & Technology Development</div>
+        <div class="activity-body">We partner with hospitals, research institutions, and companies to conduct joint research and provide technical development support for clinical AI systems.</div>
+      </div>
+    </div>
+    <div class="activity-card">
+      <div class="activity-number">03</div>
+      <div>
+        <div class="activity-title">In-Hospital Implementation, Operations & Consulting</div>
+        <div class="activity-body">We provide comprehensive support for in-hospital AI deployment, including system integration, operational framework design, and technology consulting.</div>
+      </div>
+    </div>
+    <div class="activity-card">
+      <div class="activity-number">04</div>
+      <div>
+        <div class="activity-title">Other Public-Interest Activities</div>
+        <div class="activity-body">We pursue a broad range of additional activities necessary to achieve public-interest goals related to or ancillary to the above.</div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section id="officers">
+  <div class="container">
+    <div class="section-title">Officers</div>
+    <div class="section-divider"></div>
+    <p class="officers-note">Directors: 4 to 6 (Articles of Incorporation, Article 16)</p>
+    <div class="officers-grid">
+    <div class="officer-card">
+      <div><span class="officer-role">Representative Director</span></div>
+      <div class="officer-name">Kenji Yamada</div>
+    </div>
+    <div class="officer-card">
+      <div><span class="officer-role">Director</span></div>
+      <div class="officer-name">Yoshiyuki Asai</div>
+    </div>
+    <div class="officer-card">
+      <div><span class="officer-role">Director</span></div>
+      <div class="officer-name">Masahiko Nakatsui</div>
+    </div>
+    <div class="officer-card">
+      <div><span class="officer-role">Director</span></div>
+      <div class="officer-name">Takeshi Abe</div>
+    </div>
+    </div>
+    <div class="org-info-block">
+      <div class="org-info-title">Organization</div>
+      <table class="info-table">
+      <tr><td>Organization Type</td><td>Non-profit General Incorporated Association</td></tr>
+      <tr><td>Principal Office</td><td>Ube, Yamaguchi, Japan</td></tr>
+      <tr><td>Fiscal Year</td><td>Octorber 1 – September 30</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-title">Contact</div>
+    <div class="section-divider"></div>
+    <a class="contact-email" href="mailto:contact@ocaird.org">contact@ocaird.org</a>
+    <div class="contact-address">Ube, Yamaguchi, Japan</div>
+    <div class="contact-note">Please feel free to contact us by email. We will respond within two business days.</div>
+  </div>
+</section>
+
+<footer>
+  <div>Copyright &copy; Organization for Clinical AI Research and Development. All Rights Reserved.</div>
+  <div>OCAIRD &mdash; contact@ocaird.org</div>
+</footer>
+</body>
+</html>
